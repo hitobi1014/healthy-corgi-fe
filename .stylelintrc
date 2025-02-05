@@ -1,0 +1,13 @@
+{
+  "extends": "stylelint-config-recommended-scss",
+
+  "rules": {
+    "indentation": 2,
+    "string-quotes": "single",
+    "no-duplicate-selectors": true,
+    "selector-class-pattern": null,
+    "no-descending-specificity": null,
+    "declaration-block-trailing-semicolon": "always",
+    "length-zero-no-unit": true
+  }
+}
