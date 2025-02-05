@@ -13,6 +13,7 @@
     "react-router-dom": "^7.1.3",
     "react-scripts": "5.0.1",
     "recoil": "^0.7.7",
+    "sass": "^1.83.4",
     "styled-components": "^6.1.14",
     "web-vitals": "^2.1.0"
   },
@@ -50,6 +51,9 @@
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
     "prettier": "^3.4.2",
+    "stylelint": "^16.14.1",
+    "stylelint-config-recommended-scss": "^14.1.0",
+    "stylelint-scss": "^6.10.1",
     "typescript": "^5.7.3"
   }
 }
