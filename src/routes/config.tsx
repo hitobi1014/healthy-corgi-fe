@@ -16,28 +16,24 @@ export const routeConfig: RouteConfig[] = [
   {
     path: '/',
     element: <MainLayOut />,
+    // MainLayout 하위로 Home(운동인증), 내정보
     children: [
       {
         path: '',
         element: <HomePage />,
       },
       {
-        path: 'workout/verifications',
-        element: <WorkoutVerificationPage />,
-      },
-      {
-        path: 'user',
-        children: [
-          {
-            path: 'login',
-            element: <LoginPage />,
-          },
-          {
-            path: 'signup',
-            element: <SignupPage />,
-          },
-        ],
+        path: 'my-page',
+        element: <div />, // TODO MyPage 컴포넌트 생성하면 추가하기
       },
     ],
+  },
+  {
+    path: '/login',
+    element: <LoginPage />,
+  },
+  {
+    path: '/signup',
+    element: <SignupPage />,
   },
 ];
