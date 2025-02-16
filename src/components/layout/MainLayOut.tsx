@@ -3,7 +3,10 @@ import Footer from './Footer';
 
 export default function MainLayOut() {
   return (
-    <div className="flex flex-col h-screen">
+    <div
+      className="flex flex-col h-screen"
+      style={{ paddingTop: 'var(--safe-area-top)' }}
+    >
       <div className="flex-1 overflow-y-auto">
         <Outlet />
       </div>
