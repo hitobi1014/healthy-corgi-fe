@@ -1,1 +1,12 @@
+@import "./base/variables";
+
 // 공통으로 사용되는 css
+
+
+.route-container {
+  @apply w-full h-screen max-w-[480px] mx-auto bg-white overflow-y-auto relative;
+
+  background-color: map-get($colors, 'main');
+  font-weight: 600;
+  font-size: 20px;
+}

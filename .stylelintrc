@@ -1,6 +1,5 @@
 {
   "extends": "stylelint-config-recommended-scss",
-
   "rules": {
     "indentation": 2,
     "string-quotes": "single",
@@ -8,6 +7,10 @@
     "selector-class-pattern": null,
     "no-descending-specificity": null,
     "declaration-block-trailing-semicolon": "always",
-    "length-zero-no-unit": true
+    "length-zero-no-unit": true,
+    "scss/dollar-variable-colon-space-after": "at-least-one-space",
+    "scss/dollar-variable-colon-space-before": "never",
+    "scss/map-keys-quotes": "always",
+    "value-keyword-case": null
   }
 }
