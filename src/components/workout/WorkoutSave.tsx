@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { WorkoutSaveRequest } from '@/types/workout';
-import { WORKOUT_TYPE } from '@/constants/workout';
-import { ValidationResult, validation } from './workoutValidation';
-import { types } from 'sass';
-import Error = types.Error;
+// import { WorkoutSaveRequest } from '@/types/workout';
+import { WorkoutSaveRequest } from '../../types/workout';
+// import { WORKOUT_TYPE } from '@/constants/workout';
+import { WORKOUT_TYPE } from '../../constants/workout';
+import { validation, ValidationResult } from './workoutValidation';
+// import PhotoUploader from '@/components/workout/PhotoUploader';
+import PhotoUploader from '../../components/workout/PhotoUploader';
 
-export default function WorkOutSave() {
+export default function WorkoutSave() {
   const [workoutData, setWorkoutData] = useState<WorkoutSaveRequest>({
     photoList: [],
     workoutDateTime: new Date(),
@@ -15,10 +17,11 @@ export default function WorkOutSave() {
   });
   // 운동
 
-  const handlePhotos = (e: any) => {
-    e.preventDefault();
-    // 사진 유효성 검사
-    printValidationResult(validation.photo(workoutData.photoList));
+  const handlePhotos = (newPhotos: File[]) => {
+    setWorkoutData((prev) => ({
+      ...prev,
+      photoList: newPhotos,
+    }));
   };
 
   const handleWorkoutDateTime = (e: any) => {
@@ -64,9 +67,32 @@ export default function WorkOutSave() {
   return (
     <div>
       {/*  운동인증현황 컴포넌트*/}
-      <div>운동인증</div>
-      <div>{/*2번째 컴포넌트 운동종류 + 사진*/}</div>
-      <div>저장버튼</div>
+      <div>
+        <h2>운동인증</h2>
+      </div>
+      <div>
+        {/*2번째 컴포넌트 운동종류 + 사진*/}
+        <div>
+          <div>
+            <p>날짜로고</p>
+            <p>2025.01.28</p>
+          </div>
+          <div>
+            <p>운동종류</p>
+            <button>헬스</button>
+          </div>
+        </div>
+        <div className="p-4">
+          <PhotoUploader
+            photos={workoutData.photoList}
+            onPhotosChange={handlePhotos}
+            maxPhotos={2}
+          />
+        </div>
+      </div>
+      <div>
+        <button onClick={handleSubmit}>저장버튼</button>
+      </div>
     </div>
   );
 }
