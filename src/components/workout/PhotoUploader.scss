@@ -1,0 +1,90 @@
+.photo-uploader {
+  display: grid;
+  //grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem; // 8px
+  width: 100%;
+
+  // 업로드된 사진 컨테이너
+  .photo-item {
+    position: relative;
+    aspect-ratio: 1/1;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0.5rem; // 8px
+    }
+
+    .delete-button {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      width: 2rem;
+      height: 2rem;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+    }
+  }
+
+  // 사진 추가 버튼
+  .photo-add {
+    position: relative;
+    aspect-ratio: 1/1;
+    background-color: #e5e7eb;
+    border-radius: 0.5rem;
+    border: 1px solid #e0e0e0;
+
+    .cross-container {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      // 십자가 모양
+      .cross {
+        position: relative;
+        width: 2rem;
+        height: 2rem;
+
+        // 가로선
+        &::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background-color: #9ca3af;
+          transform: translateY(-50%);
+        }
+
+        // 세로선
+        &::after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          top: 0;
+          bottom: 0;
+          width: 1px;
+          background-color: #9ca3af;
+          transform: translateX(-50%);
+        }
+      }
+    }
+
+    // 파일 입력 필드
+    input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+    }
+
+  }
+}

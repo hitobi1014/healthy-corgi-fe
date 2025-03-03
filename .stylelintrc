@@ -11,6 +11,20 @@
     "scss/dollar-variable-colon-space-after": "at-least-one-space",
     "scss/dollar-variable-colon-space-before": "never",
     "scss/map-keys-quotes": "always",
-    "value-keyword-case": null
+    "value-keyword-case": null,
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "tailwind",
+          "apply",
+          "variants",
+          "responsive",
+          "screen",
+          "layer"
+        ]
+      }
+    ]
   }
 }

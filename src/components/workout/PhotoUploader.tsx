@@ -1,4 +1,5 @@
 import React from 'react';
+import '@/components/workout/PhotoUploader.scss';
 import {
   ValidationResult,
   validation,
@@ -37,12 +38,11 @@ const PhotoUploader = ({
     const newPhotos = photos.filter((_, i) => i !== index);
     onPhotosChange(newPhotos);
   };
-
   return (
-    <div className="grid grid-cols-2 gap-2">
+    <div className="photo-uploader">
       {/*  이미 업로드된 사진들 보여주기*/}
       {photos.map((photo, index) => (
-        <div key={index} className="relative aspect-square">
+        <div key={index} className="photo-item">
           <img
             src={URL.createObjectURL(photo)}
             alt={`운동 인증 사진 ${index + 1}`}
@@ -50,8 +50,11 @@ const PhotoUploader = ({
           />
           {/*  삭제 버튼*/}
           <button
-            onClick={() => handleRemovePhoto(index)}
-            className="absolute top-2 right-2 w-8 h-8 bg-black/50 text-white rounded-full flex items-center justify-center"
+            onClick={(e) => {
+              e.stopPropagation(); // 클릭이벤트 방지
+              handleRemovePhoto(index);
+            }}
+            className="delete-button"
             type="button"
           >
             x
@@ -61,18 +64,14 @@ const PhotoUploader = ({
 
       {/*  새 사진 추가 버튼 (최대 개수 미만일 때만 표시*/}
       {photos.length < maxPhotos && (
-        <div className="relative aspect-square bg-gray-100 rounded-lg">
-          <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-2xl mb-2">📸</span>
-            <span className="text-sm text-gray-500">
-              {photos.length === 0 ? '운동 인증 사진 추가' : '추가 사진 업로드'}
-            </span>
+        <div className="photo-add">
+          <div className="cross-container">
+            <div className="cross"></div>
           </div>
           <input
             type="file"
             accept="image/*"
             // capture="environment" // 선택적 모바일에서 카메라 바로열기, 나중에 테스트 후 수정
-            className="absolute inset-0 opacity-0"
             onChange={handleFileChange}
           />
         </div>
