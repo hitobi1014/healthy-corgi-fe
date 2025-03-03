@@ -1,4 +1,4 @@
-import { WORKOUT_TYPE, WORKOUT_SATISFACTION } from '../constants/workout';
+import { WORKOUT_TYPE, WORKOUT_SATISFACTION } from '@/constants/workout';
 
 export type WorkoutType = (typeof WORKOUT_TYPE)[keyof typeof WORKOUT_TYPE];
 export type WorkoutSatisfaction = typeof WORKOUT_SATISFACTION | null;

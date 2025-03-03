@@ -1,5 +1,8 @@
 import React from 'react';
-import { ValidationResult, validation } from './workoutValidation';
+import {
+  ValidationResult,
+  validation,
+} from '@/components/workout/workoutValidation';
 
 interface PhotoUploaderProps {
   photos: File[];

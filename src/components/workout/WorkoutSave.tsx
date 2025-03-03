@@ -1,11 +1,14 @@
 import { useState } from 'react';
 // import { WorkoutSaveRequest } from '@/types/workout';
-import { WorkoutSaveRequest } from '../../types/workout';
+import { WorkoutSaveRequest } from '@/types/workout';
 // import { WORKOUT_TYPE } from '@/constants/workout';
-import { WORKOUT_TYPE } from '../../constants/workout';
-import { validation, ValidationResult } from './workoutValidation';
+import { WORKOUT_TYPE } from '@/constants/workout';
+import {
+  validation,
+  ValidationResult,
+} from '@/components/workout/workoutValidation';
 // import PhotoUploader from '@/components/workout/PhotoUploader';
-import PhotoUploader from '../../components/workout/PhotoUploader';
+import PhotoUploader from '@/components/workout/PhotoUploader';
 
 export default function WorkoutSave() {
   const [workoutData, setWorkoutData] = useState<WorkoutSaveRequest>({
