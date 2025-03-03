@@ -11,7 +11,14 @@ import {
 import PhotoUploader from '@/components/workout/PhotoUploader';
 import HcButton from '@/components/Button/HcButton';
 
+// 캘린더
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { ko } from 'date-fns/locale';
+
 export default function WorkoutSave() {
+  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+
   const [workoutData, setWorkoutData] = useState<WorkoutSaveRequest>({
     photoList: [],
     workoutDateTime: new Date(),
@@ -55,6 +62,8 @@ export default function WorkoutSave() {
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
+    // 모든 데이터 저장 전에 set해서 보내기
+
     // 데이터 검증 => 날짜, 운동종류, 사진
     printValidationResult(validation.all(workoutData));
 
@@ -66,6 +75,14 @@ export default function WorkoutSave() {
       // 메세지 출력 어떻게할지?
       alert(result.message); // 임시
     }
+  };
+
+  const formatDate = (date: Date) => {
+    if (!date) return '';
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}.${month}.${day}`;
   };
 
   return (
@@ -80,24 +97,40 @@ export default function WorkoutSave() {
           {/* 날짜 + 컴포넌트 운동종류*/}
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">
-              {/*캘린더 아이콘*/}
-              <span className="text-gray-500">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-              </span>
-              <p className="text-base text-gray-500">2025.01.28</p>
+              <DatePicker
+                selected={selectedDate}
+                onChange={(date) => setSelectedDate(date || new Date())}
+                dateFormat="yyyy.MM.dd"
+                locale={ko}
+                // 모바일 최적화 설정
+                popperPlacement="bottom-start"
+                className="react-datepicker-ignore-onclickoutside"
+                maxDate={new Date()}
+                // 모바일 환경 최적화 스타일링
+                customInput={
+                  <button className="flex items-center gap-2">
+                    <span className="text-gray-500">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        />
+                      </svg>
+                    </span>
+                    <p className="text-base text-gray-500">
+                      {formatDate(selectedDate)}
+                    </p>
+                  </button>
+                }
+              />
             </div>
             <div className="flex items-center space-x-3">
               <p className="text-base font-medium">운동종류</p>
