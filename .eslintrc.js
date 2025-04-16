@@ -5,7 +5,7 @@ module.exports = {
     'react-app/jest',
     // 추가 설정
     'eslint:recommended',
-    'plugin:react/recommended',
+    // 'plugin:react/recommended',
     'plugin:prettier/recommended',
   ],
   rules: {
